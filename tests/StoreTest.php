@@ -145,5 +145,22 @@
             $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
         }
 
+        function test_find()
+        {
+            //Arrange
+            $store_name = "Fred Meyers";
+            $test_store = new Store($id, $store_name);
+            $test_store->save();
+
+            $store_name2 = "Walmart";
+            $test_store2 = new Store($id, $store_name2);
+            $test_store2->save();
+
+            //Act
+            $result = Store::find($test_store->getId());
+            //Assert
+            $this->assertEquals($test_store, $result);
+        }
+
     }
  ?>
