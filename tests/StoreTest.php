@@ -137,10 +137,12 @@
             $brand_name2 = "Vans";
             $test_brand2 = new Brand($id4, $brand_name2);
             $test_brand2->save();
+
             //Act
             $test_store->addBrand($test_brand);
             $test_store->addBrand($test_brand2);
             $test_store2->addBrand($test_brand2);
+
             //Assert
             $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
         }

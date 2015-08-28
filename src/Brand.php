@@ -54,7 +54,7 @@
 
             foreach ($results as $result){
                 $id = $result['id'];
-                $name = $result['name'];
+                $store_name = $result['name'];
                 $new_store_name = new Store($id, $store_name);
                 array_push($stores, $new_store_name);
             }
