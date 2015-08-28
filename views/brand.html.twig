@@ -11,7 +11,7 @@
         {% if brand_stores is not empty %}
         <p>Here are the Stores for this brand:</p>
         <ul>
-            {% for store in all_stores %}
+            {% for store in brand_stores %}
             <li>{{ store.getStoreName }}</li>
             {% endfor %}
         </ul>
@@ -19,12 +19,12 @@
 
         <h4>Add a store to this brand:</h4>
 
-        <form action='/add_stores' method='post'>
+        <form action='/brands/{id}' method='post'>
             <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
             <label for="store_id">Select a store</label>
-            <select id='store_id' name='store_id' type='text'>
+            <select id='store_id' name='store_id'>
 
-                {% for store in all_stores %}
+                {% for store in stores %}
                     <option value="{{ store.getId }}"> {{ store.getStoreName }} </option>
                 {% endfor %}
             </select>
