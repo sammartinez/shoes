@@ -46,8 +46,8 @@
         {
             $results = $GLOBALS['DB']->query(
                 "SELECT stores.*FROM
-                    brands JOIN brands_stores ON (brands_stores.id = brands.id)
-                    JOIN brands ON (brands_stores.brand_id = brands.id)
+                    brands JOIN brands_stores ON (brands.id = brands_stores.brand_id)
+                            JOIN stores ON (stores.id = brands_stores.store_id)
                     WHERE brands.id = {$this->getId()};");
 
             $stores = array();

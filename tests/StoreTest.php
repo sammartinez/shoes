@@ -103,16 +103,16 @@
             $brand_name = "Nike";
             $test_brand = new Brand($id, $brand_name);
             $test_brand->save();
-            var_dump($test_brand);
+            //var_dump($test_brand);
 
             //Act
             $test_store->addBrand($test_brand);
-            var_dump($test_store);
+            //var_dump($test_store);
 
 
             //Assert
             $this->assertEquals($test_store->getBrands(), [$test_brand]);
-            var_dump($test_brand);
+            //var_dump($test_brand);
         }
 
         function test_getBrands()
