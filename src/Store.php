@@ -7,7 +7,7 @@
         private $store_name;
 
         //Constructors
-        function __construct($id, $store_name)
+        function __construct($id = null, $store_name)
         {
             $this->id = $id;
             $this->store_name = $store_name;
@@ -46,7 +46,7 @@
 
         function addBrand($brand)
         {
-            $GLOBALS['DB']->exec("INSERT INTO brands_stores (store_id, brand_id) VALUES ({$brand->getId()}, {$this->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (store_id, brand_id) VALUES ({$this->getId()}, {$brand->getId()});");
         }
 
         function getBrands()
@@ -61,7 +61,7 @@
 
             foreach ($results as $result){
                 $id = $result['id'];
-                $name = $result['name'];
+                $brand_name = $result['name'];
                 $new_brand_name = new Brand($id, $brand_name);
                 array_push($brands, $new_brand_name);
             }
