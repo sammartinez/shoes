@@ -37,6 +37,30 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function addStore($store)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO brands_stores (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
+        }
+
+        function getStores()
+        {
+            $results = $GLOBALS['DB']->query(
+                "SELECT stores.*FROM
+                    brands JOIN brands_stores ON (brands_stores.id = brands.id)
+                    JOIN brands ON (brands_stores.brand_id = brands.id)
+                    WHERE brands.id = {$this->getId()};");
+
+            $stores = array();
+
+            foreach ($results as $result){
+                $id = $result['id'];
+                $name = $result['name'];
+                $new_store_name = new Store($id, $store_name);
+                array_push($stores, $new_store_name);
+            }
+            return $stores;
+        }
+
 
         //Static functions
         static function getAll()
