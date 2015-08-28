@@ -4,48 +4,67 @@
         require_once __DIR__."/../src/Brand.php";
         require_once __DIR__."/../src/Store.php";
 
+        $app = new Silex\Application();
+        $app [debug] = true;
+
         $server = 'mysql:host=localhost:8889;dbname=shoes';
         $username = 'root';
         $password = 'root';
         $DB = new PDO($server, $username, $password);
 
-        $app = new Silex\Application();
+
         $app->register(new Silex\Provider\TwigServiceProvider(), array(
             'twig.path' => __DIR__."/../views"
         ));
+
         use Symfony\Component\HttpFoundation\Request;
         Request::enableHttpMethodParameterOverride();
 
         //Get Calls
-        $app->get('/', function() use ($app) {
+            $app->get("/", function() use ($app) {
 
-            return $app['twig']->render('index.html.twig');
-        });
+                return $app['twig']->render('index.html.twig');
+            });
+
+        //Get Brand Calls
+            $app->get("/brands", function() use ($app) {
+                return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
+            });
+
+            $app->get("/brands/{id}", function($id) use ($app) {
+            $brand = Brand::find($id);
+                return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $brand->getStores(), 'all_stores' => Store::getAll()));
+            });
+
+        //Get Stores Calls
+            $app->get("/stores", function() use ($app) {
+                return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
+            });
 
         //Post Calls
-
-        //Brand Post Calls
-        $app->post("/brands", function() use ($app) {
+            $app->post("/brands", function() use ($app){
             $brand_name = $_POST['brand_name'];
-            $new_brand = new Brand($name, $id = null);
-            $new_brand->save();
+            $brand = new Brand($id = null, $brand_name);
+            $brand->save();
 
-            $store = Store::find($store_id);
+                return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
+            });
 
-            return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $store->getBrands()));
-        });
-
-        //Store Post Calls
-        $app->post("/stores", function() use ($app) {
-            $store = new Store($_POST['store_name']);
+            $app->post("/stores", function() use ($app){
+            $store_name = $_POST['store_name'];
+            $store = new Store($id = null, $store_name);
             $store->save();
 
-            return $app['twig']->render('index.html.twig', array('stores' => Store::getAll()));
-        });
+                return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
+            });
 
-        //Patch Calls
+        //Delete All stores Call
+            $app->post("/delete_stores", function() use ($app){
+            Store::deleteAll();
 
+                return $app['twig']->render('delete_stores.html.twig');
+            });
 
-    return $app;
+        return $app;
 
 ?>
