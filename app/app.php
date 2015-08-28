@@ -1,12 +1,6 @@
 <?php
 
-        //do a git init
-        //make a repo in order to have the file be added to GitHub.
-        //Run composer install
-        //Start apachectl start server
-        //Create database shoes and shoes_test
-        //Create two tables called brands and stores with id serial PRIMARY KEY, name in each
-        //Create join table called stores_brands with id serial PRIMARY KEY, brand_id, store_id
+        
         //Build tests within both classes and finish both classes files.
 
         require_once __DIR__."/../vendor/autoload.php";
