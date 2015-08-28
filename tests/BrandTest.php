@@ -73,6 +73,23 @@
             $result = Brand::getAll();
             $this->assertEquals([], $result);
         }
+
+        function testUpdate()
+        {
+            //Arrange
+            $id = null;
+            $brand_name = "Nike";
+            $test_brand = new Brand($id, $brand_name);
+            $test_brand->save();
+
+            $new_brand_name = "Aldo";
+
+            //Act
+            $test_brand->update($new_brand_name);
+
+            //Assert
+            $this->assertEquals($test_brand->getBrandName(), $new_brand_name);
+        }
     }
 
  ?>

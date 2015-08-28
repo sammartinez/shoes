@@ -37,6 +37,13 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        //Update function
+        function update($new_brand_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE brands SET name = '{$new_brand_name}' WHERE brand_id = {$this->getId()};");
+            $this->setBrandName($new_brand_name);
+        }
+
         //Static functions
         static function getAll()
         {
