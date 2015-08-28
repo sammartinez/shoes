@@ -14,6 +14,14 @@
 * Run 'composer install' inside the root folder to install dependencies
 * Use the shoes.sql.zip and import into a mysql webpage at the location localhost:8080/phpmyadmin
 
+* Below are the commands used in order to create the database and tables for the database:
+    - CREATE DATABASE shoes;
+    - USE shoes;
+    - CREATE TABLE stores (name varchar(20), id serial PRIMARY KEY);
+    - CREATE TABLE brands (name varchar(20), id serial PRIMARY KEY);
+    - CREATE TABLE brands_stores (store_id int, brand_id int, id serial PRIMARY KEY);
+
+
 ## Technologies Used
 
 Backend: PHP, Silex
