@@ -16,7 +16,7 @@
         protected function tearDown()
         {
             Brand::deleteAll();
-            Store::deleteAll();
+            //Store::deleteAll();
         }
 
         function TestSave()
@@ -42,13 +42,36 @@
             $test_brand = new Brand($id, $brand_name);
             $test_brand->save();
 
+            $id2 = null;
+            $brand_name2 = "Salamon";
+            $test_brand2 = new Brand($id2, $brand_name2);
+            $test_brand2->save();
+
+            //Act
+            $result = Brand::getAll();
+
+            //Assert
+            $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            //Arrange
+            $id = null;
+            $brand_name = "Nike";
+            $test_brand = new Brand($id, $brand_name);
+            $test_brand->save();
+
             $brand_name2 = "Salamon";
             $test_brand2 = new Brand($id, $brand_name);
             $test_brand2->save();
+
             //Act
-            $result = Brand::getAll();
+            Brand::deleteAll();
+
             //Assert
-            $this->assertEquals([$test_brand, $test_brand2], $result);
+            $result = Brand::getAll();
+            $this->assertEquals([], $result);
         }
     }
 
