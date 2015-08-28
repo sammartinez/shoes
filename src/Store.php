@@ -44,11 +44,19 @@
             $this->setStoreName($new_store_name);
         }
 
+        //Delete function
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+        }
+
+        //Adds a single brand to the join table
         function addBrand($brand)
         {
             $GLOBALS['DB']->exec("INSERT INTO brands_stores (store_id, brand_id) VALUES ({$this->getId()}, {$brand->getId()});");
         }
 
+        //Gets all the brands from the join table in order to see which stores the brands are available at
         function getBrands()
         {
             $results = $GLOBALS['DB']->query(

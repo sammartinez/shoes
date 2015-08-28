@@ -6,7 +6,7 @@
 
 ## Description
 
-//Still need to add a Description
+This application allows you to add stores to a database and shoe brands associated with that store. Users are about to type into a field of input for both the Stores and Brands of Shoes to add to the database in order to see where those brands of shoes are located based on which store carries them. 
 
 ## Setup
 
@@ -24,7 +24,7 @@
 
 ## Technologies Used
 
-Backend: PHP, Silex
+Backend: PHP, Silex, MySQL, PHPUnit
 Front-End: Bootstrap framework with HTML5, CSS
 
 ### Legal

@@ -164,5 +164,24 @@
             $this->assertEquals($test_store, $result);
         }
 
+        function test_delete()
+        {
+           //Arrange
+           $store_name = "New Seasons";
+           $test_store = new Store($id, $store_name);
+           $test_store->save();
+
+           $store_name2 = "Whole Foods";
+           $test_store2 = new Store($id, $store_name2);
+           $test_store2->save();
+
+           //Act
+           $test_store->delete();
+           $result = Store::getAll();
+
+           //Assert
+           $this->assertEquals($test_store2, $result[0]);
+        }
+
     }
  ?>
