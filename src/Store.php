@@ -88,5 +88,17 @@
             }
             return $stores;
         }
+
+        static function find($search_id)
+        {
+            $found_store = null;
+            $all_stores = Store::getAll();
+            foreach ($all_stores as $store) {
+                if ($store->getId() == $search_id) {
+                    $found_store = $store;
+                }
+            }
+            return $found_store;
+        }
     }
 ?>
