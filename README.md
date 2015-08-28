@@ -1,17 +1,18 @@
-# _{Application Name}_
+# _Shoes_
 
-##### _{Brief description of application}, {Date of current version}_
+##### Ability to add shoes by brand and what store the shoes are located at, August 28th, 2015
 
-#### By Filipe Silvestre
+#### By Sam Martinez
 
 ## Description
 
-_{This is a detailed description of your application. Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. Do you want other developers to use this code in their apps? Talk about things like that here in simple terms.}_
+//Still need to add a Description
 
 ## Setup
 
 * Load PHP server inside the /../web/ folder using 'php -S localhost:8000'
 * Run 'composer install' inside the root folder to install dependencies
+* Use the shoes.sql.zip and import into a mysql webpage at the location localhost:8080/phpmyadmin
 
 ## Technologies Used
 
@@ -20,7 +21,7 @@ Front-End: Bootstrap framework with HTML5, CSS
 
 ### Legal
 
-Copyright (c) 2015 Filipe Silvestre
+Copyright (c) 2015 Sam Martinez
 
 This software is licensed under the MIT license.
 
