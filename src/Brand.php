@@ -37,21 +37,6 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        //Update function
-        function update($new_brand_name)
-        {
-            $GLOBALS['DB']->exec("UPDATE brands SET name = '{$new_brand_name}' WHERE brand_id = {$this->getId()};");
-            $this->setBrandName($new_brand_name);
-        }
-
-        //Delete single brand function
-        function delete()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
-            $GLOBALS['DB']->exec("DELETE FROM brands_stores WHERE brand_id ={$this->getId()};");
-        }
-
-        
 
         //Static functions
         static function getAll()
