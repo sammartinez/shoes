@@ -28,7 +28,7 @@
 
         //Get Brand Calls ========================================
             $app->get("/brands", function() use ($app) {
-                return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
+                return $app['twig']->render('brands.html.twig', array('all_brands' => Brand::getAll()));
             });
 
             $app->get("/brands/{id}", function($id) use ($app) {
@@ -43,7 +43,8 @@
 
             $app->get("/store/{id}", function($id) use ($app) {
                 $store = Store::find($id);
-                return $app['twig']->render('store.html.twig', array('store' => $store, 'brand_stores' => $store->getBrands(), 'all_brands' => Brand::getAll()));
+
+                return $app['twig']->render('store.html.twig', array('store' => $store, 'brand_stores' => $store->getBrands(), 'brands' => Brand::getAll()));
             });
 
             $app->get("/stores/{id}/edit", function($id) use ($app) {
@@ -84,7 +85,7 @@
             $brand = Brand::find($_POST['brand_id']);
             $store->addBrand($brand);
 
-                return $app['twig']->render('store.html.twig', array('store' => $store, 'store_brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
+                return $app['twig']->render('store.html.twig', array('store' => $store, 'brand_stores' => $store->getBrands(), 'all_brands' => Brand::getAll()));
             });
 
         //Delete All stores Call
@@ -102,11 +103,11 @@
             });
 
             $app->patch("/store/{id}", function($id) use ($app) {
-            $store_name = $_POST['name'];
+            $store_name = $_POST['store_name'];
             $store = Store::find($id);
             $store->update($store_name);
 
-                return $app['twig']->render('store.html.twig', array('store' => $store, 'store_brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
+                return $app['twig']->render('store.html.twig', array('store' => $store, 'brand_stores' => $store->getBrands(), 'all_brands' => Brand::getAll()));
             });
 
         return $app;

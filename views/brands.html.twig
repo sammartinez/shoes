@@ -8,10 +8,10 @@
         <div class="container">
 
         <h1>Brands</h1>
-         {% if brands is not empty %}
+         {% if all_brands is not empty %}
             <h3>Here are all the Brands of shoes you have added: </h3>
             <ul>
-                {% for brand in brands %}
+                {% for brand in all_brands %}
                     <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
                 {% endfor %}
             </ul>
