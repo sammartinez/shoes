@@ -20,13 +20,13 @@
         use Symfony\Component\HttpFoundation\Request;
         Request::enableHttpMethodParameterOverride();
 
-        //Get Calls
+        //Get Calls =============================================
             $app->get("/", function() use ($app) {
 
                 return $app['twig']->render('index.html.twig');
             });
 
-        //Get Brand Calls
+        //Get Brand Calls ========================================
             $app->get("/brands", function() use ($app) {
                 return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()));
             });
@@ -52,7 +52,7 @@
                 return $app['twig']->render('store_edit.html.twig', array('store' => $store));
             });
 
-        //Post Calls
+        //Post Calls ======================================================
         //Post Brand Calls
             $app->post("/brands", function() use ($app){
             $brand_name = $_POST['brand_name'];
