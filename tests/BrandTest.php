@@ -5,8 +5,8 @@
     * @backupStaticAttributes disabled
     */
 
-    require_once 'src/Brand.php';
-    require_once 'src/Store.php';
+    require_once "src/Brand.php";
+    require_once "src/Store.php";
 
     $server = 'mysql:host=localhost:8889;dbname=shoes_tests';
     $username = 'root';
@@ -21,7 +21,7 @@
             Store::deleteAll();
         }
 
-        function TestSave()
+        function testSave()
         {
             //Arrange
             $id = null;
@@ -33,7 +33,7 @@
             $result = Brand::getAll();
 
             //Assert
-            $this->assertEquals([$test_brand], $result[0]);
+            $this->assertEquals($test_brand, $result[0]);
         }
 
         function testGetAll()

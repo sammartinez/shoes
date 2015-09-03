@@ -21,7 +21,7 @@
             Store::deleteAll();
         }
 
-        function TestSave()
+        function testSave()
         {
             //Arrange
             $id = null;
@@ -33,7 +33,7 @@
             $result = Store::getAll();
 
             //Assert
-            $this->assertEquals([$test_store], $result[0]);
+            $this->assertEquals($test_store, $result[0]);
         }
 
         function testGetAll()
