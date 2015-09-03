@@ -40,7 +40,7 @@
         //Update function
         function update($new_store_name)
         {
-            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_store_name}' WHERE store_id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_store_name}' WHERE id = {$this->getId()};");
             $this->setStoreName($new_store_name);
         }
 
