@@ -19,8 +19,7 @@
 
         <h4>Add a store to this brand:</h4>
 
-        <form action='/brands/{id}' method='post'>
-            <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
+        <form action='/brands/{{ brand.getId }}' method='post'>
             <label for="store_id">Select a store</label>
             <select id='store_id' name='store_id'>
 

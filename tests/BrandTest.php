@@ -106,9 +106,9 @@
 
             //Act
             $test_brand->addStore($test_store);
-
+            $result = $test_brand->getStores();
             //Assert
-            $this->assertEquals($test_brand->getStores(), [$test_store]);
+            $this->assertEquals([$test_store], $result);
         }
 
         function test_getStores()

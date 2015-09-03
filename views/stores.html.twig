@@ -5,12 +5,14 @@
         <title>Stores</title>
     </head>
     <body>
+        <div class="container">
+
         <h1>Stores</h1>
         {% if stores is not empty %}
             <h3>Here are all the Stores you have added: </h3>
             <ul>
                 {% for store in stores %}
-                    <li><a href="/stores/{{ store.getId }}">{{ store.getStoreName }}</a></li>
+                    <li><a href="/store/{{ store.getId }}">{{ store.getStoreName }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -25,5 +27,6 @@
         </form>
     </br>
         <a href="/"><button class="btn btn-default">Home</button></a>
+        </div>
     </body>
 </html>

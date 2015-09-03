@@ -41,15 +41,10 @@
                 return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
             });
 
-            $app->get("/stores/{id}", function($id) use ($app) {
-            // $app->get("/stores/{id}", function($id) use ($app) {
+            $app->get("/store/{id}", function($id) use ($app) {
                 $store = Store::find($id);
-            // $store = Store::find($id);
-                return $app['twig']->render('store.html.twig', array('store' => $store, 'store_brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
-            //     return $app['twig']->render('store.html.twig', array('store' => $store, 'store_ brands' => $store->getBrands(), 'all_brands' => Brand::getAll()));
+                return $app['twig']->render('store.html.twig', array('store' => $store, 'brand_stores' => $store->getBrands(), 'all_brands' => Brand::getAll()));
             });
-            //
-            // });
 
             $app->get("/stores/{id}/edit", function($id) use ($app) {
             $store = Store::find($id);
@@ -74,8 +69,6 @@
 
                 return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'brand_stores' => $brand->getStores(), 'stores' => Store::getAll()));
             });
-
-
 
         //Post Stores Call
             $app->post("/stores", function() use ($app){
