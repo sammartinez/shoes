@@ -24,7 +24,6 @@
         function testSave()
         {
             //Arrange
-            $id = null;
             $brand_name = "Nike";
             $test_brand = new Brand($id, $brand_name);
             $test_brand->save();
@@ -39,14 +38,12 @@
         function testGetAll()
         {
             //Arrange
-            $id = null;
             $brand_name = "Nike";
             $test_brand = new Brand($id, $brand_name);
             $test_brand->save();
 
-            $id2 = null;
             $brand_name2 = "Salamon";
-            $test_brand2 = new Brand($id2, $brand_name2);
+            $test_brand2 = new Brand($id, $brand_name2);
             $test_brand2->save();
 
             //Act
@@ -59,7 +56,6 @@
         function testDeleteAll()
         {
             //Arrange
-            $id = null;
             $brand_name = "Nike";
             $test_brand = new Brand($id, $brand_name);
             $test_brand->save();
@@ -114,24 +110,20 @@
         function test_getStores()
         {
             //Arrange
-            $id = null;
             $store_name = "Fred Meyers";
             $test_store = new Store($id, $store_name);
             $test_store->save();
 
-            $id2 = null;
             $store_name2 = "Safeway";
-            $test_store2 = new Store($id2, $store_name2);
+            $test_store2 = new Store($id, $store_name2);
             $test_store2->save();
 
-            $id3 = null;
             $brand_name = "Nike";
-            $test_brand = new Brand($id3, $brand_name);
+            $test_brand = new Brand($id, $brand_name);
             $test_brand->save();
 
-            $id4 = null;
             $brand_name2 = "Vans";
-            $test_brand2 = new Brand($id4, $brand_name2);
+            $test_brand2 = new Brand($id, $brand_name2);
             $test_brand2->save();
 
             //Act
