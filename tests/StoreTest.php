@@ -8,7 +8,7 @@
     require_once 'src/Brand.php';
     require_once 'src/Store.php';
 
-    $server = 'mysql:host=localhost:8889;dbname=shoes_tests';
+    $server = 'mysql:host=localhost;dbname=shoes_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -96,12 +96,14 @@
         function test_addBrand()
         {
             //Arrange
+            $id = null;
             $store_name = "Fred Meyers";
             $test_store = new Store($id, $store_name);
             $test_store->save();
 
+            $id2 = null;
             $brand_name = "Nike";
-            $test_brand = new Brand($id, $brand_name);
+            $test_brand = new Brand($id2, $brand_name);
             $test_brand->save();
             //var_dump($test_brand);
 
@@ -150,12 +152,14 @@
         function test_find()
         {
             //Arrange
+            $id = null;
             $store_name = "Fred Meyers";
             $test_store = new Store($id, $store_name);
             $test_store->save();
 
+            $id2 = null;
             $store_name2 = "Walmart";
-            $test_store2 = new Store($id, $store_name2);
+            $test_store2 = new Store($id2, $store_name2);
             $test_store2->save();
 
             //Act
@@ -167,12 +171,14 @@
         function test_delete()
         {
            //Arrange
+           $id = null;
            $store_name = "New Seasons";
            $test_store = new Store($id, $store_name);
            $test_store->save();
 
+           $id2 = null;
            $store_name2 = "Whole Foods";
-           $test_store2 = new Store($id, $store_name2);
+           $test_store2 = new Store($id2, $store_name2);
            $test_store2->save();
 
            //Act
